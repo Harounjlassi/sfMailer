@@ -11,11 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;;
 class MailerController extends AbstractController
 {
     #[Route('/send-email')]
-    public function index(MailerInterface $mailer)
+    public function index(MailerInterface $mailer): Response
     {
         $email = (new Email())
             ->from('yhhhgtub@gmail.com')
-            ->to('jlassi.haroun@esprit.tn')
+            ->to('jlsshrn8621@gmail.com')
             ->subject('Email Test')
             ->text('A sample email using mailtrap.')
             ->html('<p>See Twig integration for better HTML integration!</p>');
@@ -23,11 +23,11 @@ class MailerController extends AbstractController
 
         try {
             $mailer->send($email);
-        } catch (TransportExceptionInterface $e) {
-
+        } catch (\Exception $e) {
+            // Log or print the exception message and stack trace
+            echo 'Error: ' . $e->getMessage();
+            echo 'Stack Trace: ' . $e->getTraceAsString();
         }
-        return new Response(
-            'Email sent successfully'
-        );
+        return $this->render('mailer/index.html.twig');
     }
 }
