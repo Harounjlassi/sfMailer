@@ -15,7 +15,7 @@ class MailerController extends AbstractController
     {
         $email = (new Email())
             ->from('yhhhgtub@gmail.com')
-            ->to('jlsshrn8621@gmail.com')
+            ->to('jlassi.haroun@esprit.tn')
             ->subject('Email Test')
             ->text('A sample email using mailtrap.')
             ->html('<p>See Twig integration for better HTML integration!</p>');
